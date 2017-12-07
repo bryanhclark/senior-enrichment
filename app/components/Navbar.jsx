@@ -18,7 +18,6 @@ const Navbar = () => {
                 iconButtonElement={<IconButton><ContentFilter /></IconButton>} >
                 <NavLink to="/campus"> <MenuItem primaryText="Universities" /></NavLink>
                 <NavLink to="/students"> <MenuItem primaryText="Students" /></NavLink>
-
             </IconMenu>
         } />
     );

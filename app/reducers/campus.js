@@ -4,6 +4,7 @@ import axios from 'axios'
 const GOT_CAMPUSES = 'GOT_CAMPUSES'
 
 
+
 //action creator
 
 export const gotCampuses = (campuses) => {
@@ -12,6 +13,8 @@ export const gotCampuses = (campuses) => {
         campuses
     }
 }
+
+
 
 //thunk
 
@@ -24,6 +27,7 @@ export const fetchCampuses = () => {
             .catch(console.error);
     }
 }
+
 
 
 

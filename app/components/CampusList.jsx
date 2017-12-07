@@ -1,51 +1,29 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux'
-import { fetchCampuses } from '../reducers/campus'
 
 
-class CampusList extends Component {
-    componentDidMount() {
-        this.props.loadCampuses();
-    }
 
-
-    render() {
-        const myCampuses = this.props.campuses
-        // console.log(campuses)
-        return (
+const CampusList = (props) => {
+    return (
+        <div>
+            <h1>CAMPUSES:</h1>
             <div>
-                <h1>CAMPUSES:</h1>
-                <div>
-                    {
-                        myCampuses.map(campus =>
-                            (
-                                <div key={campus.id} >
+                {
+                    props.campuses.map(campus =>
+                        (
+
+                            <div key={campus.id} >
+                                <NavLink to={`/campus/${campus.id}`} key={campus.id}>
                                     <img src={campus.imageUrl} />
-                                </div>
-                            ))
-                    }
-                </div>
+                                </NavLink>
+                            </div>
+
+                        ))
+                }
             </div>
-        )
-    }
-}
-function mapStateToProps(storeState) {
-    return {
-        campuses: storeState.campuses
-    }
-}
-function mapDispactToProps(dispatch) {
-    return {
-        loadCampuses: () => {
-            dispatch(fetchCampuses())
-        }
-    };
+        </div>
+    )
 }
 
-
-const CampusListContainer = connect(mapStateToProps, mapDispactToProps)(CampusList);
-
-
-export default CampusListContainer;
-
-
+export default CampusList

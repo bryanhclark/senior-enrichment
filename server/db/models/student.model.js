@@ -12,7 +12,13 @@ const Student = db.define('students', {
         }
     },
 
-})
+}, {
+        getterMethods: {
+            fullName() {
+                return this.firstName + ' ' + this.lastName
+            }
+        }
+    })
 
 
 
