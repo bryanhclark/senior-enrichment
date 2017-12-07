@@ -1,33 +1,25 @@
 import React from 'react';
 import AppBar from 'material-ui/AppBar'
-import IconMenu from 'material-ui/IconMenu';
-import FlatButton from 'material-ui/FlatButton';
-import IconButton from 'material-ui/IconButton';
-import MenuItem from 'material-ui/MenuItem'
+import RaisedButton from 'material-ui/RaisedButton';
 import Popover from 'material-ui/Popover';
-import ContentFilter from 'material-ui/svg-icons/content/filter-list';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import { NavLink } from 'react-router-dom'
+import Gavel from 'material-ui/svg-icons/action/gavel'
 
+const style = {
+    margin: 10,
+};
 
+const rightButtons = (
+    <div>
+        <NavLink to="/campus"><RaisedButton label="Campuses" style={style} /></NavLink>
+        <NavLink to="/students"><RaisedButton label="Students" style={style} /></NavLink>
+    </div>
+);
 
 const Navbar = () => {
     return (
-        <AppBar title="WELCOME TO THE THUNDERDOME" iconElementLeft={
-            <IconMenu
-                iconButtonElement={<IconButton><ContentFilter /></IconButton>} >
-                <NavLink to="/campus"> <MenuItem primaryText="Universities" /></NavLink>
-                <NavLink to="/students"> <MenuItem primaryText="Students" /></NavLink>
-            </IconMenu>
-        } />
+        <AppBar iconElementLeft={<Gavel style={{ margin: 10, color: "white" }} />} title="WELCOME TO THE THUNDERDOME" iconElementRight={rightButtons} />
     );
 }
-
-
-
-
-
-
-
 
 export default Navbar;

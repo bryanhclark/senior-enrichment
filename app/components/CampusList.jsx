@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 
 
+
 const CampusList = (props) => {
     return (
         <div>
@@ -22,6 +23,7 @@ const CampusList = (props) => {
                         ))
                 }
             </div>
+
         </div>
     )
 }
