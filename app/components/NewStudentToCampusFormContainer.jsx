@@ -5,19 +5,18 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField'
 import { postCampus } from '../reducers/campus'
-import StudentForm from './NewStudentForm'
+import NewStudentToCampusForm from './NewStudentToCampusForm'
 
 
-class StudentFormContainer extends Component {
+class NewStudentToCampusContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
             open: false,
-            value: 1
 
         };
         this.handleClose = this.handleClose.bind(this)
-        this.handleDropDownChange = this.handleDropDownChange.bind(this)
+
 
     }
     handleOpen = () => {
@@ -27,9 +26,7 @@ class StudentFormContainer extends Component {
     handleClose = () => {
         this.setState({ open: false });
     };
-    handleDropDownChange = (event, index, value) => {
-        this.setState({ value });
-    }
+
 
     render() {
         return (
@@ -43,7 +40,7 @@ class StudentFormContainer extends Component {
                     titleStyle={{ textAlign: "center" }}
                 >
 
-                    <StudentForm dropDownValue={this.state.value} handleClose={this.handleClose} handleDropDownChange={this.handleDropDownChange} />
+                    <NewStudentToCampusForm campus={this.props.currentCampus} handleClose={this.handleClose} />
                 </Dialog>
             </div>
         );
@@ -51,5 +48,13 @@ class StudentFormContainer extends Component {
 }
 
 
+function mapStateToProps(storeState) {
+    return {
+        currentCampus: storeState.currentCampus
+    }
+}
 
-export default StudentFormContainer;
+
+const StudentToCampusContainer = connect(mapStateToProps)(NewStudentToCampusContainer)
+
+export default StudentToCampusContainer;

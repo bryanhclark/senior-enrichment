@@ -8,7 +8,8 @@ make an array of imageUrl for the campuses default value, and then set the defau
 -- look at juke
 #Todo List:
     - make single user view
-    - make delete request
+    - make delete campus router
+        - look into validating that all users have been switched off of campus
     - storeStore prop for current input value to handle form validation
     - make put request
     - make delete request

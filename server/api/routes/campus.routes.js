@@ -43,5 +43,18 @@ router.get('/:campusId/students', (req, res, next) => [
 ])
 
 
+router.delete('/:campusId', (req, res, next) => {
+    Campus.destroy({
+        where: {
+            id: req.params.campusId
+        }
+    })
+        .then(() => {
+            res.send('something')
+        })
+        .catch(next);
+})
+
+
 
 module.exports = router;

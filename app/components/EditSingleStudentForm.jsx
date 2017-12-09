@@ -7,7 +7,7 @@ import TextField from 'material-ui/TextField'
 import DropDownMenu from 'material-ui/DropDownMenu'
 import MenuItem from 'material-ui/MenuItem';
 import { withRouter } from 'react-router-dom'
-import { editStudent } from '../reducers/student'
+import { editOneStudent } from '../reducers/singleStudent'
 const styles = {
     customWidth: {
         width: 200,
@@ -16,7 +16,7 @@ const styles = {
 
 
 
-const EditStudentForm = (props) => {
+const EditSingleStudentForm = (props) => {
     console.log(props)
     const actions = [
         <FlatButton
@@ -61,7 +61,7 @@ function mapDispactToProps(dispatch, ownProps) {
 
         handleSubmit(event) {
             event.preventDefault();
-            dispatch(editStudent({
+            dispatch(editOneStudent({
                 id: ownProps.formProps.id,
                 firstName: ownProps.formProps.firstName,
                 lastName: ownProps.formProps.lastName,
@@ -71,6 +71,6 @@ function mapDispactToProps(dispatch, ownProps) {
     }
 }
 
-const EditStudentFormContainer = connect(mapStateToProps, mapDispactToProps)(EditStudentForm);
+const EditSingleStudentFormContainer = connect(mapStateToProps, mapDispactToProps)(EditSingleStudentForm);
 
-export default EditStudentFormContainer;
+export default EditSingleStudentFormContainer;

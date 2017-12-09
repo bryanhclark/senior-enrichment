@@ -57,8 +57,7 @@ function mapDispactToProps(dispatch, ownProps) {
     return {
 
         handleSubmit(event) {
-            let campusName =
-                event.preventDefault();
+            event.preventDefault();
             dispatch(postStudent({
                 firstName: event.target.firstName.value,
                 lastName: event.target.lastName.value,

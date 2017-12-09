@@ -3,6 +3,7 @@ import axios from 'axios'
 //action type
 const GOT_CAMPUSES = 'GOT_CAMPUSES'
 const NEW_CAMPUS = 'NEW_CAMPUS'
+const DELETE_CAMPUS = 'DELETE_CAMPUS'
 
 
 
@@ -22,6 +23,12 @@ export const createCampus = (newCampus) => {
     }
 }
 
+export const deleteCampus = (deletedCampus) => {
+    return {
+        type: DELETE_CAMPUS,
+        deletedCampus
+    }
+}
 //thunk
 
 export const fetchCampuses = () => {
@@ -44,6 +51,17 @@ export const postCampus = (campusObj, history) => {
     }
 }
 
+export const deleteCampusThunk = (campusObj, history) => {
+    return function thunk(dispatch) {
+        axios.delete('/api/campus/' + campusObj.id)
+            .then(res => {
+                dispatch(deleteCampus(res.data))
+                history.push('/campus')
+            })
+            .catch(console.error)
+    }
+}
+
 
 
 
@@ -54,6 +72,13 @@ const campusReducer = (state = [], action) => {
             return action.campuses
         case NEW_CAMPUS:
             return [...state, action.newCampus]
+        case DELETE_CAMPUS:
+            const deletedCampusList = state.filter(campus => {
+                if (campus.id !== action.deletedCampus.id) {
+                    return campus
+                }
+            })
+            return deletedCampusList
         default:
             return state
     }

@@ -4,10 +4,10 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField'
-import DropDownMenu from 'material-ui/DropDownMenu'
+import { addCurrentStudentTHUNK } from '../reducers/currentStudents'
 import MenuItem from 'material-ui/MenuItem';
 import { withRouter } from 'react-router-dom'
-import { editStudent } from '../reducers/student'
+
 const styles = {
     customWidth: {
         width: 200,
@@ -15,9 +15,7 @@ const styles = {
 };
 
 
-
-const EditStudentForm = (props) => {
-    console.log(props)
+const NewStudentToCampusForm = (props) => {
     const actions = [
         <FlatButton
             label="Cancel"
@@ -31,16 +29,11 @@ const EditStudentForm = (props) => {
             key='2'
             onClick={props.handleClose} />,
     ];
-
     return (
         <form method='POST' onSubmit={props.handleSubmit} >
-            <TextField value={props.formProps.firstName} onChange={props.handleFirstNameChange} name="firstName" floatingLabelText="First Name" style={{ margin: 5 }} />
-            <TextField value={props.formProps.lastName} onChange={props.handleLastNameChange} name="lastName" floatingLabelText="Last Name" style={{ margin: 5 }} /><br />
-            <DropDownMenu value={props.formProps.value} style={styles.customWidth} onChange={props.handleDropDownChange}>
-                {props.campuses.map((campus, index) => (
-                    <MenuItem value={campus.id} primaryText={campus.name} key={campus.id} name='campusId' />
-                ))}
-            </DropDownMenu>
+            <TextField name="firstName" floatingLabelText="First Name" style={{ margin: 5 }} />
+            <TextField name="lastName" floatingLabelText="Last Name" style={{ margin: 5 }} /><br />
+
             <div style={{ textAlign: 'right', padding: 8, margin: '24px -24px -24px -24px' }}>
                 {actions}
             </div>
@@ -52,25 +45,25 @@ const EditStudentForm = (props) => {
 
 function mapStateToProps(storeState) {
     return {
-        campuses: storeState.campuses
+        currentCampus: storeState.currentCampus,
+        currentStudents: storeState.currentStudents
+
     }
 }
 function mapDispactToProps(dispatch, ownProps) {
     console.log(ownProps)
     return {
-
         handleSubmit(event) {
             event.preventDefault();
-            dispatch(editStudent({
-                id: ownProps.formProps.id,
-                firstName: ownProps.formProps.firstName,
-                lastName: ownProps.formProps.lastName,
-                campusId: ownProps.formProps.value
+            dispatch(addCurrentStudentTHUNK({
+                firstName: event.target.firstName.value,
+                lastName: event.target.lastName.value,
+                campus: ownProps.campus.id
             }, ownProps.history))
         }
     }
 }
 
-const EditStudentFormContainer = connect(mapStateToProps, mapDispactToProps)(EditStudentForm);
+const NewStudentToCampusFormContainer = withRouter(connect(mapStateToProps, mapDispactToProps)(NewStudentToCampusForm));
 
-export default EditStudentFormContainer;
+export default NewStudentToCampusFormContainer;

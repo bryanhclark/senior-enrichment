@@ -7,6 +7,7 @@ const EDIT_STUDENT = 'EDIT_STUDENT'
 const DELETE_STUDENT = 'DELETE_STUDENT'
 
 
+
 //action creator
 const gotStudents = (students) => {
     return {
@@ -14,6 +15,8 @@ const gotStudents = (students) => {
         students
     }
 }
+
+
 
 export const createStudent = (newStudent) => {
     return {
@@ -80,6 +83,9 @@ export const deleteSTUDENT = (student) => {
 }
 
 
+
+
+
 //sub-reducer
 export const studentReducer = (state = [], action) => {
     switch (action.type) {
@@ -96,7 +102,6 @@ export const studentReducer = (state = [], action) => {
             })
             return updatedStudents
         case DELETE_STUDENT:
-            console.log('in reducer', action.deletedStudent)
             const deletedThenUpdatedStudents = state.filter(student => {
                 if (student.id !== action.deletedStudent.id) {
                     return student

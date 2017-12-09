@@ -18,14 +18,26 @@ router.get('/', (req, res, next) => {
         .catch(next);
 })
 
-let campus;
+router.get('/:studentId', (req, res, next) => {
+    Student.findById(req.params.studentId, {
+        include: {
+            all: true
+        }
+    })
+        .then(foundStudent => {
+            res.send(foundStudent)
+        })
+        .catch(next)
+})
+
 router.post('/', (req, res, next) => {
     Campus.findById(req.body.campus)
         .then(campus => {
             return Student.create({
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
-                campusId: req.body.campus
+                campusId: req.body.campus,
+                email: req.body.firstName + '.' + req.body.lastName + '@' + campus.name + ".com"
             })
         })
         .then(createdStudent => {
@@ -51,6 +63,7 @@ router.put('/:studentId', (req, res, next) => {
         })
         .spread((numUpdates, updatedStudent) => {
             const theStudent = updatedStudent[0]
+            console.log(theStudent)
             return Student.findById(theStudent.id, {
                 include: {
                     all: true, nested: true

@@ -25,3 +25,26 @@ html{
     background-color: #f44242
 }
 
+.editDeleteButtonContainer{
+    display: flex
+}
+
+.singleStudentContainer{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+
+
+.singleStudent{
+    margin: 30px
+}
+
+.newStudentButtonContainer{
+    margin-top: 50px;
+    margin-left: 20px;
+}
+
+
+

@@ -16,11 +16,11 @@ const Student = db.define('students', {
                 return this.firstName + ' ' + this.lastName
             }
         },
-        hooks: {
-            beforeValidate: (Student) => {
-                Student.email = Student.firstName + '.' + Student.lastName + '@gmail.com'
-            }
-        }
+        // hooks: {
+        //     beforeValidate: (Student) => {
+        //         Student.email = Student.firstName + '.' + Student.lastName + '@gmail.com'
+        //     }
+        // }
     })
 
 

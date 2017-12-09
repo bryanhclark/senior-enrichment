@@ -13,8 +13,9 @@ class StatefulStudentList extends Component {
     }
 
     render() {
+        console.log(this.props);
         return (
-            <StudentList students={this.props.students} campuses={this.props.campuses} deleteStudent={this.props.deleteStudent} />
+            <StudentList students={this.props.students} deleteStudent={this.props.deleteStudent} />
         )
     }
 }
