@@ -13,7 +13,7 @@ class SingleCampus extends Component {
 
     render() {
         return (
-            <div className='singleSchoolContainer'>
+            <div id='singleSchoolContainer'>
                 <div className='singleSchoolName'>
                     <h1>{this.props.campus.name}</h1>
                 </div>
@@ -32,8 +32,6 @@ class SingleCampus extends Component {
         )
     }
 }
-
-
 
 function mapStateToProps(storeState) {
     return {

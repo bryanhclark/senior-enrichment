@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { fetchStudents } from '../reducers/student'
+import { fetchCampuses } from '../reducers/campus'
 import StudentList from './StudentList'
+import { deleteSTUDENT } from '../reducers/student'
 
 
 class StatefulStudentList extends Component {
     componentDidMount() {
         this.props.loadStudents();
+        this.props.loadCampuses();
     }
 
     render() {
         return (
-            <StudentList students={this.props.students} />
+            <StudentList students={this.props.students} campuses={this.props.campuses} deleteStudent={this.props.deleteStudent} />
         )
     }
 }
-
 
 
 function mapStateToProps(storeState) {
@@ -25,8 +27,14 @@ function mapStateToProps(storeState) {
 }
 function mapDispactToProps(dispatch) {
     return {
+        deleteStudent: (student) => {
+            dispatch(deleteSTUDENT(student))
+        },
         loadStudents: () => {
             dispatch(fetchStudents())
+        },
+        loadCampuses: () => {
+            dispatch(fetchCampuses())
         }
     };
 }

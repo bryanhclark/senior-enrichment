@@ -1,0 +1,27 @@
+#campusList, #studentList, #singleSchoolContainer{
+    margin: 15px;
+}
+
+#campusContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.campus{
+    margin: 15px;
+    text-align: center;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+html, body{
+    margin: 0
+}
+
+html{
+    background-color: #f44242
+}
+

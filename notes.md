@@ -7,10 +7,11 @@ make an array of imageUrl for the campuses default value, and then set the defau
 -- Ex: Stateful Campuses that pass down campuses to CampusList as a prop
 -- look at juke
 #Todo List:
-    - make single campus view
     - make single user view
-    - 
-    - make post request
-        - make a postCampus component
+    - make delete request
+    - storeStore prop for current input value to handle form validation
     - make put request
     - make delete request
+    - use a dialog to display form
+        - use snackbar as confirmation that you created a new campus/student
+    - make put request

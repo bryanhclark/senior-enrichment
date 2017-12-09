@@ -15,6 +15,13 @@ router.get('/', (req, res, next) => {
         .catch(next);
 })
 
+router.post('/', (req, res, next) => {
+
+    Campus.create(req.body)
+        .then(campus => res.send(campus))
+        .catch(next);
+})
+
 router.get('/:campusId', (req, res, next) => {
     Campus.findById(Number(req.params.campusId))
         .then(campus => {

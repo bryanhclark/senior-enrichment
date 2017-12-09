@@ -8,12 +8,14 @@ import StudentList from './StudentList'
 import Navbar from './Navbar'
 
 
-
+const style = {
+    backgroundColor: "#f44242"
+}
 export default class Home extends Component {
     render() {
         return (
             <Router>
-                <div>
+                <div id="home-main" style={style}>
                     <Navbar />
                     <Switch>
                         <Route exact path='/campus' component={StatefulCampusList} />

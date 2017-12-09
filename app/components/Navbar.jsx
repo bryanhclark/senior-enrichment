@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom'
 import Gavel from 'material-ui/svg-icons/action/gavel'
 
 const style = {
-    margin: 10,
+    margin: 9,
 };
 
 const rightButtons = (
@@ -18,7 +18,11 @@ const rightButtons = (
 
 const Navbar = () => {
     return (
-        <AppBar iconElementLeft={<Gavel style={{ margin: 10, color: "white" }} />} title="WELCOME TO THE THUNDERDOME" iconElementRight={rightButtons} />
+        <AppBar
+            iconElementLeft={<Gavel style={{ color: 'black', margin: 9 }} />}
+            style={{ margin: 'auto', color: 'white' }}
+            title="WELCOME TO THE THUNDERDOME"
+            iconElementRight={rightButtons} />
     );
 }
 
