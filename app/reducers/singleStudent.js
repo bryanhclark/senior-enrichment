@@ -49,7 +49,6 @@ const singleStudentReducer = (state = {}, action) => {
         case GET_ONE_STUDENT:
             return action.currentStudent
         case EDIT_ONE_STUDENT:
-            console.log('in reducer')
             return action.edittedStudent
         default:
             return state

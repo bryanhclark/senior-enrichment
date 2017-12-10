@@ -34,13 +34,31 @@ router.get('/:campusId/students', (req, res, next) => [
     Student.findAll({
         where: {
             campusId: req.params.campusId
+        },
+        include: {
+            all: true
         }
+
+    }).then(students => {
+        res.send(students)
     })
-        .then(students => {
-            res.send(students)
-        })
         .catch(next)
 ])
+
+router.put('/:campusId', (req, res, next) => {
+    console.log(req.body);
+    Campus.update(req.body, {
+        where: {
+            id: req.params.campusId
+        },
+        returning: true
+    })
+        .spread((numUpdates, updatedCampus) => {
+            const theCampus = updatedCampus[0]
+            res.send(theCampus)
+        })
+        .catch(next);
+})
 
 
 router.delete('/:campusId', (req, res, next) => {

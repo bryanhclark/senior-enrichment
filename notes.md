@@ -7,12 +7,10 @@ make an array of imageUrl for the campuses default value, and then set the defau
 -- Ex: Stateful Campuses that pass down campuses to CampusList as a prop
 -- look at juke
 #Todo List:
-    - make single user view
-    - make delete campus router
-        - look into validating that all users have been switched off of campus
-    - storeStore prop for current input value to handle form validation
-    - make put request
-    - make delete request
-    - use a dialog to display form
+    - autopopulating student edit forms dont work correctly
+        - they usually populate the last student you got
+        - try filtering currentStudents and pass that student as a prop?
+    - when you edit a student from the campus, redirect back to that campus
+
         - use snackbar as confirmation that you created a new campus/student
     - make put request

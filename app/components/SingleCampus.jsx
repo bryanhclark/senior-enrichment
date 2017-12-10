@@ -9,6 +9,7 @@ import IconButton from 'material-ui/IconButton';
 import { deleteCampusThunk } from '../reducers/campus'
 import { deleteSTUDENT } from '../reducers/student'
 import StudentList from './StudentList'
+import EditCampusFormContainer from './EditCampusFormContainer'
 
 
 class SingleCampus extends Component {
@@ -52,6 +53,7 @@ class SingleCampus extends Component {
                     <DeleteButton />
                 </IconButton>
                 <NewStudentToCampusFormContainer />
+                <EditCampusFormContainer campus={this.props.campus} />
             </div>
         )
     }
@@ -59,7 +61,7 @@ class SingleCampus extends Component {
 
 function mapStateToProps(storeState) {
     return {
-        campus: storeState.currentCampus,
+        campus: storeState.singleCampus,
         students: storeState.currentStudents
     }
 }

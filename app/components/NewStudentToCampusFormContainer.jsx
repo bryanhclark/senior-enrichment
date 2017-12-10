@@ -40,7 +40,7 @@ class NewStudentToCampusContainer extends Component {
                     titleStyle={{ textAlign: "center" }}
                 >
 
-                    <NewStudentToCampusForm campus={this.props.currentCampus} handleClose={this.handleClose} />
+                    <NewStudentToCampusForm currentCampus={this.props.currentCampus} handleClose={this.handleClose} />
                 </Dialog>
             </div>
         );
@@ -50,7 +50,7 @@ class NewStudentToCampusContainer extends Component {
 
 function mapStateToProps(storeState) {
     return {
-        currentCampus: storeState.currentCampus
+        currentCampus: storeState.singleCampus
     }
 }
 
