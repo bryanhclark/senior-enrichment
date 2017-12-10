@@ -21,15 +21,6 @@ const Student = db.define('students', {
             fullName() {
                 return this.firstName + ' ' + this.lastName
             }
-            // },
-            // GPA() {
-            //     let theGPA = this.gpa.toString()
-            //     if (!theGpa.includes('.')) {
-            //         return theGpa + '.0'
-            //     } else {
-            //         return theGPA
-            //     }
-            // }
         },
         hooks: {
             beforeValidate: (Student) => {
