@@ -6,6 +6,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField'
 import { postCampus } from '../reducers/campus'
 import NewStudentToCampusForm from './NewStudentToCampusForm'
+import IconButton from 'material-ui/IconButton';
+import AddPerson from 'material-ui/svg-icons/social/person-add'
 
 
 class NewStudentToCampusContainer extends Component {
@@ -31,7 +33,9 @@ class NewStudentToCampusContainer extends Component {
     render() {
         return (
             <div>
-                <RaisedButton label="New Student" onClick={this.handleOpen} />
+                <IconButton onClick={this.handleOpen} tooltip='Add Student'>
+                    <AddPerson />
+                </IconButton>
                 <Dialog
                     title="Submit New Student"
                     modal={false}

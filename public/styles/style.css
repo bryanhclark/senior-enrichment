@@ -2,6 +2,28 @@
     margin: 15px;
 }
 
+
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+html, body{
+    margin: 0
+}
+
+html{
+    background-color: #7be1e5
+}
+
+
+/*
+campusList stytes
+*/
+.editDeleteButtonContainer{
+    display: flex
+}
+
 #campusContainer{
     display: flex;
     flex-wrap: wrap;
@@ -13,38 +35,72 @@
     text-align: center;
 }
 
-body{
-    font-family: 'Roboto', sans-serif;
+.campusListHeader{
+    display: flex;
+    justify-content: space-between;
 }
 
-html, body{
-    margin: 0
+.addCampusButtonDiv{
+    float: right;
+    margin: auto 0;
 }
 
-html{
-    background-color: #f44242
-}
-
-.editDeleteButtonContainer{
-    display: flex
-}
+/*
+Single Campus View Styles
+*/
 
 .singleStudentContainer{
     display: flex;
     flex-wrap: wrap;
+}
+
+.singleCampusButtons{
+    display: flex;
+    float: right;
+    margin-left: 10px;
+}
+
+.singleSchoolHeader{
+    display: flex;
+}
+
+.singleSchoolName{
+    width: 30%;
+    display: inline-block;
+}
+
+
+
+/*
+All Student List Styles
+*/
+
+.newStudentButtonContainer{
+    display: flex;
+    float: right;
+    margin: auto 0; 
+}
+
+.studentListHeader{
+    display: flex;
+    justify-content: space-between;
     
 }
 
 
+/*
+SingleStudentList Styles
+*/
 
 .singleStudent{
     margin: 30px
 }
 
-.newStudentButtonContainer{
-    margin-top: 50px;
-    margin-left: 20px;
-}
+
+
+
+
+
 
 
 

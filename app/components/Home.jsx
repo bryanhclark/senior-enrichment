@@ -10,7 +10,7 @@ import Navbar from './Navbar'
 
 
 const style = {
-    backgroundColor: "#f44242"
+    backgroundColor: "#7be1e5"
 }
 export default class Home extends Component {
     render() {

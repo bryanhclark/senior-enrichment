@@ -9,7 +9,17 @@ import IconButton from 'material-ui/IconButton';
 import { deleteCampusThunk } from '../reducers/campus'
 import { deleteSTUDENT } from '../reducers/student'
 import StudentList from './StudentList'
+import Edit from 'material-ui/svg-icons/editor/mode-edit'
 import EditCampusFormContainer from './EditCampusFormContainer'
+import {
+    Table,
+    TableBody,
+    TableFooter,
+    TableHeader,
+    TableHeaderColumn,
+    TableRow,
+    TableRowColumn,
+} from 'material-ui/Table';
 
 
 class SingleCampus extends Component {
@@ -35,26 +45,57 @@ class SingleCampus extends Component {
     render() {
         return (
             <div id='singleSchoolContainer'>
-                <div className='singleSchoolName'>
-                    <h1>{this.props.campus.name}</h1>
+                <div className='singleCampusHeader'>
+                    <div className='singleSchoolName'>
+                        <h1>{this.props.campus.name}</h1>
+                        <p>{this.props.campus.description}</p>
+                    </div>
+                    <div className="singleCampusButtons">
+                        <NewStudentToCampusFormContainer />
+                        <IconButton disabled={this.checkDisabled()} onClick={() => this.props.deleteCampus(this.props.campus)} tooltip='Delete Campus'>
+                            <DeleteButton />
+                        </IconButton>
+                        <EditCampusFormContainer />
+                    </div>
                 </div>
-                <div className='currentStudentList'>
-                    <ul>
-                        {
-                            this.props.students.map(student => (
-                                <li key={student.id}>
-                                    {student.fullName} - <NavLink to={`/students/${student.id}`} > Edit</NavLink>
-                                </li>
-                            ))
-                        }
-                    </ul>
+                <div className='singleCampusStudentList'>
+
+                    {
+                        <Table style={{ opacity: 0.5 }}>
+                            <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
+                                <TableRow>
+                                    <TableHeaderColumn style={{ width: 5 }}>ID</TableHeaderColumn>
+                                    <TableHeaderColumn style={{ width: 140 }}>Name</TableHeaderColumn>
+                                    <TableHeaderColumn style={{ width: 100 }}>Campus</TableHeaderColumn>
+                                    <TableHeaderColumn style={{ width: 5 }} >GPA</TableHeaderColumn>
+                                    <TableHeaderColumn style={{ width: 150 }}>Email</TableHeaderColumn>
+                                    <TableHeaderColumn style={{ width: 5 }}>Edit</TableHeaderColumn>
+                                </TableRow>
+                            </TableHeader>
+                            <TableBody displayRowCheckbox={false}>
+                                {this.props.students.map((student) => (
+                                    <TableRow key={student.id}>
+                                        <TableRowColumn style={{ width: 5 }}>{student.id}</TableRowColumn>
+                                        <TableRowColumn style={{ width: 140 }}>{student.fullName}</TableRowColumn>
+                                        <TableRowColumn style={{ width: 100 }}>{student.campus.name}</TableRowColumn>
+                                        <TableRowColumn style={{ width: 5 }}>{student.gpa}</TableRowColumn>
+                                        <TableRowColumn style={{ width: 150 }}>{student.email}</TableRowColumn>
+                                        <TableRowColumn style={{ width: 5 }}>
+                                            <IconButton onClick={this.handleOpen} tooltip='Edit Student'>
+                                                <NavLink to={`/students/${student.id}`} > <Edit /></NavLink>
+                                            </IconButton>
+                                        </TableRowColumn>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+
+                        </Table>
+                    }
+
                 </div>
-                <IconButton disabled={this.checkDisabled()} onClick={() => this.props.deleteCampus(this.props.campus)} tooltip='Delete Student'>
-                    <DeleteButton />
-                </IconButton>
-                <NewStudentToCampusFormContainer />
-                <EditCampusFormContainer />
+
             </div>
+
         )
     }
 }

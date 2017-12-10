@@ -31,13 +31,15 @@ router.get('/:studentId', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
+
     Campus.findById(req.body.campus)
         .then(campus => {
+            let campusName = campus.name.split(' ').join('.')
             return Student.create({
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
                 campusId: req.body.campus,
-                email: req.body.firstName + '.' + req.body.lastName + '@' + campus.name + ".com",
+                email: req.body.firstName + '.' + req.body.lastName + '@' + (campus.name.split(' ').join('.')) + ".com",
                 gpa: req.body.gpa
             })
         })
