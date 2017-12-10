@@ -37,7 +37,8 @@ router.post('/', (req, res, next) => {
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
                 campusId: req.body.campus,
-                email: req.body.firstName + '.' + req.body.lastName + '@' + campus.name + ".com"
+                email: req.body.firstName + '.' + req.body.lastName + '@' + campus.name + ".com",
+                gpa: req.body.gpa
             })
         })
         .then(createdStudent => {

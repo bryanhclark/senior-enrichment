@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
@@ -8,6 +9,7 @@ import { postCampus } from '../reducers/campus'
 import EditCampusForm from './EditCampusForm'
 import IconButton from 'material-ui/IconButton';
 import Edit from 'material-ui/svg-icons/editor/mode-edit'
+import { fetchOneCampus } from '../reducers/singleCampus'
 
 
 
@@ -27,6 +29,19 @@ class EditCampusContainer extends Component {
         this.handleImageUrlChange = this.handleImageUrlChange.bind(this)
         this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
 
+    }
+    componentDidMount() {
+        this.props.loadCampus(this.props.match.params.campusId)
+
+
+    }
+    componentWillReceiveProps() {
+        this.setState({
+            id: this.props.campus.id,
+            name: this.props.campus.name,
+            imageUrl: this.props.campus.imageUrl,
+            description: this.props.campus.description
+        })
     }
     handleNameChange(event) {
         console.log(event.target.value)
@@ -76,6 +91,20 @@ class EditCampusContainer extends Component {
     }
 }
 
+function mapStateToProps(storeState) {
+    return {
+        campus: storeState.singleCampus
+    }
+}
 
+function mapDispatchToProps(dispatch) {
+    return {
+        loadCampus: (id) => {
+            dispatch(fetchOneCampus(id))
+        }
+    }
+}
 
-export default EditCampusContainer;
+const CampusFormContainer = withRouter(connect(mapStateToProps, mapDispatchToProps)(EditCampusContainer))
+
+export default CampusFormContainer;

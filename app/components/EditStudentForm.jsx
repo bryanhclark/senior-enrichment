@@ -17,7 +17,7 @@ const styles = {
 
 
 const EditStudentForm = (props) => {
-    console.log(props)
+    console.log(props.campuses)
     const actions = [
         <FlatButton
             label="Cancel"
@@ -36,6 +36,7 @@ const EditStudentForm = (props) => {
         <form method='POST' onSubmit={props.handleSubmit} >
             <TextField value={props.formProps.firstName} onChange={props.handleFirstNameChange} name="firstName" floatingLabelText="First Name" style={{ margin: 5 }} />
             <TextField value={props.formProps.lastName} onChange={props.handleLastNameChange} name="lastName" floatingLabelText="Last Name" style={{ margin: 5 }} /><br />
+            <TextField value={props.formProps.gpa} onChange={props.handleGPAChange} name="gpa" floatingLabelText="GPA" style={{ margin: 5 }} /><br />
             <DropDownMenu value={props.formProps.value} style={styles.customWidth} onChange={props.handleDropDownChange}>
                 {props.campuses.map((campus, index) => (
                     <MenuItem value={campus.id} primaryText={campus.name} key={campus.id} name='campusId' />

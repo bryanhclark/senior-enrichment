@@ -39,7 +39,6 @@ class NewStudentToCampusContainer extends Component {
                     onRequestClose={this.handleClose}
                     titleStyle={{ textAlign: "center" }}
                 >
-
                     <NewStudentToCampusForm currentCampus={this.props.currentCampus} handleClose={this.handleClose} />
                 </Dialog>
             </div>

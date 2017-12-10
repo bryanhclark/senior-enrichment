@@ -34,7 +34,7 @@ const NewStudentToCampusForm = (props) => {
         <form method='POST' onSubmit={props.handleSubmit} >
             <TextField name="firstName" floatingLabelText="First Name" style={{ margin: 5 }} />
             <TextField name="lastName" floatingLabelText="Last Name" style={{ margin: 5 }} /><br />
-
+            <TextField name="gpa" floatingLabelText="GPA" style={{ margin: 5 }} /><br />
             <div style={{ textAlign: 'right', padding: 8, margin: '24px -24px -24px -24px' }}>
                 {actions}
             </div>
@@ -58,7 +58,8 @@ function mapDispactToProps(dispatch, ownProps) {
             dispatch(addCurrentStudentTHUNK({
                 firstName: event.target.firstName.value,
                 lastName: event.target.lastName.value,
-                campus: ownProps.currentCampus.id
+                campus: ownProps.currentCampus.id,
+                gpa: event.target.gpa.value
             }, ownProps.history))
         }
     }

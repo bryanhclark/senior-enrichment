@@ -33,6 +33,7 @@ const Form = (props) => {
         <form method='POST' onSubmit={props.handleSubmit} >
             <TextField name="firstName" floatingLabelText="First Name" style={{ margin: 5 }} />
             <TextField name="lastName" floatingLabelText="Last Name" style={{ margin: 5 }} /><br />
+            <TextField name="gpa" floatingLabelText="GPA" style={{ margin: 5 }} /><br />
             <DropDownMenu value={props.dropDownValue} style={styles.customWidth} onChange={props.handleDropDownChange}>
                 {props.campuses.map((campus, index) => (
                     <MenuItem value={campus.id} primaryText={campus.name} key={campus.id} name='campusId' />
@@ -49,7 +50,6 @@ const Form = (props) => {
 
 function mapStateToProps(storeState) {
     return {
-        newCampusEntry: storeState.newStudentEntry,
         campuses: storeState.campuses
     }
 }
@@ -61,7 +61,8 @@ function mapDispactToProps(dispatch, ownProps) {
             dispatch(postStudent({
                 firstName: event.target.firstName.value,
                 lastName: event.target.lastName.value,
-                campus: ownProps.dropDownValue
+                campus: ownProps.dropDownValue,
+                gpa: event.target.gpa.value
             }, ownProps.history))
         }
     }

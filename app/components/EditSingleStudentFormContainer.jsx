@@ -8,6 +8,9 @@ import { postCampus } from '../reducers/campus'
 import EditSingleStudentForm from './EditSingleStudentForm'
 import IconButton from 'material-ui/IconButton';
 import Edit from 'material-ui/svg-icons/editor/mode-edit'
+import { fetchOneStudent } from '../reducers/singleStudent'
+import { withRouter } from 'react-router-dom'
+import { fetchCampuses } from '../reducers/campus'
 
 
 
@@ -20,13 +23,27 @@ class EditSingleStudentContainer extends Component {
             value: this.props.student.campusId,
             firstName: this.props.student.firstName,
             lastName: this.props.student.lastName,
-
+            gpa: this.props.student.gpa
         };
         this.handleClose = this.handleClose.bind(this)
         this.handleFirstNameChange = this.handleFirstNameChange.bind(this)
         this.handleLastNameChange = this.handleLastNameChange.bind(this)
         this.handleDropDownChange = this.handleDropDownChange.bind(this)
+        this.handleGPAChange = this.handleGPAChange.bind(this)
+    }
 
+    componentDidMount() {
+        this.props.loadStudent(this.props.match.params.studentId)
+        this.props.loadCampuses()
+    }
+    componentWillReceiveProps() {
+        this.setState({
+            id: this.props.student.id,
+            value: this.props.student.campusId,
+            firstName: this.props.student.firstName,
+            lastName: this.props.student.lastName,
+            gpa: this.props.student.gpa
+        })
     }
     handleFirstNameChange(event) {
         console.log(event.target.value)
@@ -46,6 +63,10 @@ class EditSingleStudentContainer extends Component {
     handleDropDownChange = (event, index, value) => {
         console.log(value);
         this.setState({ value });
+    }
+    handleGPAChange(event) {
+        console.log(event.target.value)
+        this.setState({ gpa: event.target.value })
     }
 
 
@@ -67,7 +88,8 @@ class EditSingleStudentContainer extends Component {
                             handleClose={this.handleClose}
                             handleFirstNameChange={this.handleFirstNameChange}
                             handleLastNameChange={this.handleLastNameChange}
-                            handleDropDownChange={this.handleDropDownChange} />
+                            handleDropDownChange={this.handleDropDownChange}
+                            handleGPAChange={this.handleGPAChange} />
                     </Dialog>
                 </IconButton>
             </div>
@@ -75,6 +97,24 @@ class EditSingleStudentContainer extends Component {
     }
 }
 
+function mapStateToProps(storeState) {
+    return {
+        student: storeState.currentStudent,
+        campuses: storeState.campuses
+    }
+}
 
+function mapDispatchToProps(dispatch) {
+    return {
+        loadStudent: (id) => {
+            dispatch(fetchOneStudent(id))
+        },
+        loadCampuses: () => {
+            dispatch(fetchCampuses())
+        }
+    }
+}
 
-export default EditSingleStudentContainer;
+const StudentFormContainer = withRouter(connect(mapStateToProps, mapDispatchToProps)(EditSingleStudentContainer))
+
+export default StudentFormContainer;

@@ -53,7 +53,7 @@ class SingleCampus extends Component {
                     <DeleteButton />
                 </IconButton>
                 <NewStudentToCampusFormContainer />
-                <EditCampusFormContainer campus={this.props.campus} />
+                <EditCampusFormContainer />
             </div>
         )
     }

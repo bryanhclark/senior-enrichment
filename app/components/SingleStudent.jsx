@@ -15,6 +15,8 @@ class singleStudent extends Component {
             <div className='singleStudentContainer'>
                 <div className='singleStudentName'>
                     <h1>{this.props.currentStudent.fullName}</h1>
+                    <h1>{this.props.currentStudent.gpa}</h1>
+                    <h1>{this.props.currentStudent.email}</h1>
                 </div>
                 <EditSingleStudentFormContainer student={this.props.currentStudent} />
             </div>

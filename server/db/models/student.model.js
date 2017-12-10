@@ -9,18 +9,39 @@ const Student = db.define('students', {
     email: {
         type: Sequelize.STRING, allowNull: true,
     },
+    gpa: {
+        type: Sequelize.DECIMAL, allowNull: false, validate: {
+            min: 0.0,
+            max: 4.0
+        }
+    }
 
 }, {
         getterMethods: {
             fullName() {
                 return this.firstName + ' ' + this.lastName
             }
+            // },
+            // GPA() {
+            //     let theGPA = this.gpa.toString()
+            //     if (!theGpa.includes('.')) {
+            //         return theGpa + '.0'
+            //     } else {
+            //         return theGPA
+            //     }
+            // }
         },
-        // hooks: {
-        //     beforeValidate: (Student) => {
-        //         Student.email = Student.firstName + '.' + Student.lastName + '@gmail.com'
-        //     }
-        // }
+        hooks: {
+            beforeValidate: (Student) => {
+                if (!Student.gpa) {
+                    Student.gpa = 2.2
+                } else if (Student.gpa > 4.0) {
+                    Student.gpa = 4.0
+                } else if (Student.gpa < 0) {
+                    Student.gpa = 0.0
+                }
+            }
+        }
     })
 
 

@@ -12,5 +12,4 @@ make an array of imageUrl for the campuses default value, and then set the defau
         - try filtering currentStudents and pass that student as a prop?
     - when you edit a student from the campus, redirect back to that campus
 
-        - use snackbar as confirmation that you created a new campus/student
-    - make put request
+    - add gpa to student ****
