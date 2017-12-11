@@ -11,8 +11,10 @@ const style = {
 
 const rightButtons = (
     <div>
+        <NavLink to="/"><RaisedButton label="Home" style={style} /></NavLink>
         <NavLink to="/campus"><RaisedButton label="Campuses" style={style} /></NavLink>
         <NavLink to="/students"><RaisedButton label="Students" style={style} /></NavLink>
+
     </div>
 );
 
@@ -21,7 +23,7 @@ const Navbar = () => {
         <AppBar
             iconElementLeft={<Gavel style={{ color: 'black', margin: 9 }} />}
             style={{ margin: 'auto', color: 'white' }}
-            title="WELCOME TO THE THUNDERDOME"
+            title="The School"
             iconElementRight={rightButtons} />
     );
 }

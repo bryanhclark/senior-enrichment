@@ -8,6 +8,7 @@ import DropDownMenu from 'material-ui/DropDownMenu'
 import MenuItem from 'material-ui/MenuItem';
 import { withRouter } from 'react-router-dom'
 import { editOneStudent } from '../reducers/singleStudent'
+import { fetchOneCampus } from '../reducers/singleCampus'
 const styles = {
     customWidth: {
         width: 200,
@@ -63,6 +64,7 @@ function mapDispactToProps(dispatch, ownProps) {
 
         handleSubmit(event) {
             event.preventDefault();
+            dispatch(fetchOneCampus(ownProps.formProps.value))
             dispatch(editOneStudent({
                 id: ownProps.formProps.id,
                 firstName: ownProps.formProps.firstName,
@@ -71,6 +73,7 @@ function mapDispactToProps(dispatch, ownProps) {
                 email: ownProps.formProps.email,
                 gpa: ownProps.formProps.gpa
             }, ownProps.history))
+
         }
     }
 }

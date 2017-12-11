@@ -6,6 +6,7 @@ import StatefulStudentList from './StatefulStudentList'
 import SingleCampus from './SingleCampus'
 import StudentList from './StudentList'
 import singleStudent from './SingleStudent'
+import HomePage from './HomePage'
 import Navbar from './Navbar'
 
 
@@ -23,7 +24,7 @@ export default class Home extends Component {
                         <Route path='/campus/:campusId' component={SingleCampus} />
                         <Route exact path='/students' component={StatefulStudentList} />
                         <Route path='/students/:studentId' component={singleStudent} />
-                        <Route component={StatefulCampusList} />
+                        <Route component={HomePage} />
                     </Switch>
                 </div>
             </Router>

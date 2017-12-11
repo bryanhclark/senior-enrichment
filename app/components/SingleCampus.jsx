@@ -48,6 +48,7 @@ class SingleCampus extends Component {
                 <div className='singleCampusHeader'>
                     <div className='singleSchoolName'>
                         <h1>{this.props.campus.name}</h1>
+                        <img src={this.props.campus.imageUrl} style={{ height: '300px' }} />
                         <p>{this.props.campus.description}</p>
                     </div>
                     <div className="singleCampusButtons">
