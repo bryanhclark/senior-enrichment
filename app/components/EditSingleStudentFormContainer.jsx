@@ -29,6 +29,7 @@ class EditSingleStudentContainer extends Component {
         this.handleFirstNameChange = this.handleFirstNameChange.bind(this)
         this.handleLastNameChange = this.handleLastNameChange.bind(this)
         this.handleDropDownChange = this.handleDropDownChange.bind(this)
+        this.handleEmailChange = this.handleEmailChange.bind(this)
         this.handleGPAChange = this.handleGPAChange.bind(this)
     }
 
@@ -42,6 +43,7 @@ class EditSingleStudentContainer extends Component {
             value: this.props.student.campusId,
             firstName: this.props.student.firstName,
             lastName: this.props.student.lastName,
+            email: this.props.student.email,
             gpa: this.props.student.gpa
         })
     }
@@ -68,6 +70,10 @@ class EditSingleStudentContainer extends Component {
         console.log(event.target.value)
         this.setState({ gpa: event.target.value })
     }
+    handleEmailChange(event) {
+        console.log(event.target.value)
+        this.setState({ email: event.target.value })
+    }
 
 
     render() {
@@ -89,6 +95,7 @@ class EditSingleStudentContainer extends Component {
                             handleFirstNameChange={this.handleFirstNameChange}
                             handleLastNameChange={this.handleLastNameChange}
                             handleDropDownChange={this.handleDropDownChange}
+                            handleEmailChange={this.handleEmailChange}
                             handleGPAChange={this.handleGPAChange} />
                     </Dialog>
                 </IconButton>

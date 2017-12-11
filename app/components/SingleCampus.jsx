@@ -59,7 +59,7 @@ class SingleCampus extends Component {
                     </div>
                 </div>
                 <div className='singleCampusStudentList'>
-
+                    <h2>Students:</h2>
                     {
                         <Table style={{ opacity: 0.5 }}>
                             <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
@@ -81,7 +81,7 @@ class SingleCampus extends Component {
                                         <TableRowColumn style={{ width: 5 }}>{student.gpa}</TableRowColumn>
                                         <TableRowColumn style={{ width: 150 }}>{student.email}</TableRowColumn>
                                         <TableRowColumn style={{ width: 5 }}>
-                                            <IconButton onClick={this.handleOpen} tooltip='Edit Student'>
+                                            <IconButton onClick={this.handleOpen}>
                                                 <NavLink to={`/students/${student.id}`} > <Edit /></NavLink>
                                             </IconButton>
                                         </TableRowColumn>

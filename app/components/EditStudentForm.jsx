@@ -68,7 +68,7 @@ function mapDispactToProps(dispatch, ownProps) {
                 firstName: ownProps.formProps.firstName,
                 lastName: ownProps.formProps.lastName,
                 campusId: ownProps.formProps.value,
-                email: ownProps.formProps.value
+                email: ownProps.formProps.email
             }, ownProps.history))
         }
     }

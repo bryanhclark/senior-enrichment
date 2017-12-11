@@ -37,6 +37,7 @@ const EditSingleStudentForm = (props) => {
             <TextField value={props.formProps.firstName} onChange={props.handleFirstNameChange} name="firstName" floatingLabelText="First Name" style={{ margin: 5 }} />
             <TextField value={props.formProps.lastName} onChange={props.handleLastNameChange} name="lastName" floatingLabelText="Last Name" style={{ margin: 5 }} /><br />
             <TextField value={props.formProps.gpa} onChange={props.handleGPAChange} name="gpa" floatingLabelText="GPA" style={{ margin: 5 }} /><br />
+            <TextField value={props.formProps.email} onChange={props.handleEmailChange} name="email" floatingLabelText="email" style={{ margin: 5 }} /><br />
             <DropDownMenu value={props.formProps.value} style={styles.customWidth} onChange={props.handleDropDownChange}>
                 {props.campuses.map((campus, index) => (
                     <MenuItem value={campus.id} primaryText={campus.name} key={campus.id} name='campusId' />
@@ -53,11 +54,11 @@ const EditSingleStudentForm = (props) => {
 
 function mapStateToProps(storeState) {
     return {
-        campuses: storeState.campuses
+        campuses: storeState.campuses,
+        currentCampus: storeState.currentCampus
     }
 }
 function mapDispactToProps(dispatch, ownProps) {
-    console.log(ownProps)
     return {
 
         handleSubmit(event) {
@@ -67,6 +68,7 @@ function mapDispactToProps(dispatch, ownProps) {
                 firstName: ownProps.formProps.firstName,
                 lastName: ownProps.formProps.lastName,
                 campusId: ownProps.formProps.value,
+                email: ownProps.formProps.email,
                 gpa: ownProps.formProps.gpa
             }, ownProps.history))
         }
