@@ -54,9 +54,11 @@ function mapStateToProps(storeState) {
     }
 }
 function mapDispactToProps(dispatch, ownProps) {
+    console.log(ownProps)
     return {
 
         handleSubmit(event) {
+            console.log(ownProps)
             event.preventDefault();
             dispatch(postStudent({
                 firstName: event.target.firstName.value,

@@ -23,7 +23,7 @@ const Navbar = () => {
         <AppBar
             iconElementLeft={<Gavel style={{ color: 'black', margin: 9 }} />}
             style={{ margin: 'auto', color: 'white' }}
-            title="The School"
+            title="Space School"
             iconElementRight={rightButtons} />
     );
 }
