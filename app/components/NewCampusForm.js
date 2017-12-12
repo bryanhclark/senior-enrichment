@@ -38,15 +38,11 @@ const Form = (props) => {
 
 
 function mapStateToProps(storeState) {
-    return {
-        newCampusEntry: storeState.newCampusEntry
-    }
+
 }
 function mapDispactToProps(dispatch, ownProps) {
     return {
-        handleChange: (event) => {
 
-        },
         handleSubmit(event) {
             event.preventDefault();
             dispatch(postCampus({
